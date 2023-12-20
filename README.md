@@ -20,3 +20,6 @@ Rodar o comando npm start para iniciar o projeto.
 
 [Autor]
 Jefferson Sousa de Paiva
+
+[Github]
+https://github.com/metaljefferson/meuBlog
