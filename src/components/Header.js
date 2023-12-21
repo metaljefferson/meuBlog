@@ -15,7 +15,12 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     marginRight: theme.spacing(1),
   },
+  appBar: {
+    backgroundColor: "white !important",
+    color: "black !important",
+  },
 }));
+
 
 const Header = () => {
   const classes = useStyles();
@@ -23,7 +28,7 @@ const Header = () => {
   const randomBlogImageUrl = "https://source.unsplash.com/40x40/?blog";
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={classes.appBar}>
       <Toolbar>
         <div className={classes.title}>
           <img src={randomBlogImageUrl} alt="Logo" className={classes.logo} />

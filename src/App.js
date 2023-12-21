@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PostList from "./components/PostList";
+import PostList from "./pages/PostList";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import PostDetails from "./components/PostDetails";
+import PostDetails from "./pages/PostDetails";
 
 // import Post from './components/Post';
 

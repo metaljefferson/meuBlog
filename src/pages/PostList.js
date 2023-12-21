@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import Header from "./Header";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { useTheme } from "@mui/material/styles";
 
 import {
   Card,
@@ -9,10 +11,9 @@ import {
   Grid,
   Button,
   TextField,
-  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +56,7 @@ const PostList = () => {
   const classes = useStyles(theme);
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     axios
@@ -89,7 +91,7 @@ const PostList = () => {
         margin="normal"
         className={classes.searchField}
       />
-      <Grid container spacing={3}>
+      <Grid container spacing={isMobile ? 2 : 3}>
         {posts.map((post) => (
           <Grid item xs={12} sm={6} md={4} key={post.id}>
             <RouterLink to={`/post/${post.id}`} className={classes.postLink}>
@@ -100,10 +102,16 @@ const PostList = () => {
                     alt={`Imagem ${post.title}`}
                     style={{ width: "100%", height: "auto" }}
                   />
-                  <Typography variant="h6" style={{ fontSize: "18px" }}>
+                  <Typography
+                    variant="h6"
+                    style={{ fontSize: isMobile ? "16px" : "18px" }}
+                  >
                     {post.title}
                   </Typography>
-                  <Typography variant="body2" style={{ fontSize: "14px" }}>
+                  <Typography
+                    variant="body2"
+                    style={{ fontSize: isMobile ? "12px" : "14px" }}
+                  >
                     {post.body}
                   </Typography>
                   <TruncatedBody body={post.body} />
@@ -123,6 +131,7 @@ const PostList = () => {
           </Grid>
         ))}
       </Grid>
+      <Footer />
     </div>
   );
 };
